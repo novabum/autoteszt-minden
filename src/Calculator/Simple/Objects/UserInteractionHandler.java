@@ -13,7 +13,7 @@ public class UserInteractionHandler {
         System.out.println("Here are the rules:");
     }
 
-    private static void printResult(double result) {
+    public static void printResult(double result) {
         System.out.println("The result is: " + result);
     }
 
@@ -27,6 +27,8 @@ public class UserInteractionHandler {
         return IN.next().charAt(0);
     }
 
-
+    public static void notifyUserAboutInvalidOperator() {
+        System.out.println("Operator invalid");
+    }
 
 }
