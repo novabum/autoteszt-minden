@@ -8,9 +8,8 @@ public class Main {
         char operator = UserInteractionHandler.getOperator();
         int b = UserInteractionHandler.getNumber();
         Calculator calculator = new Calculator();
-        double result = calculator.calculate(a, b, operator);
         try {
-            UserInteractionHandler.printResult(result);
+            UserInteractionHandler.printResult(calculator.calculate(a, b, operator));
         } catch (InvalidOperatorException e) {
             UserInteractionHandler.notifyUserAboutInvalidOperator();
         }
