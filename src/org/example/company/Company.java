@@ -9,11 +9,12 @@ public class Company {
     private String name;
     private final List<Employee> employees = new ArrayList<>(); //final - nem felülírható, de módosítható.
 
-    public Company(String name){
+    public Company(String name) {
         this.name = name;
     }
 
     public String getName() {
+
         return name;
     }
 
@@ -25,16 +26,13 @@ public class Company {
         return employees;
     }
 
-    public void hire(Employee employee){
+    public void hire(Employee employee) {
         employees.add(employee);
     }
 
-    public void fire(Employee employee){
+    public void fire(Employee employee) {
         employees.remove(employee);
     }
-
-
-
 
 
 }

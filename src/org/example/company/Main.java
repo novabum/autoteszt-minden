@@ -29,9 +29,9 @@ public class Main {
         }
         //ALT CTRL V = változóba tud extractolni!!!
 
-Employee employee1 = new Employee( 1, 564654.44, "Nyunyóka", "Professional Koldus");
-Employee employee1 = new Employee( 1, 564654.44, "Marharépa", "Tetőács");
-Employee employee1 = new Employee( 1, 564654.44, "SzuperÁcs", "Tetőács");
+//Employee employee1 = new Employee( 1, 564654.44, "Nyunyóka", "Professional Koldus");
+//Employee employee1 = new Employee( 1, 564654.44, "Marharépa", "Tetőács");
+//Employee employee1 = new Employee( 1, 564654.44, "SzuperÁcs", "Tetőács");
 
 
     }
