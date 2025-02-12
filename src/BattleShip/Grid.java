@@ -1,10 +1,6 @@
 package BattleShip;
 
-import Calculator.Simple.Objects.InvalidOperatorException;
-
 public class Grid {
-    //    kell egy 6x6-os tábla. 6x6 = 36. 36-os tömb kell.
-
 
     //Fill grids with - signs
     public static void resetGrids(String[] string, String[] string2) {
@@ -37,51 +33,38 @@ public class Grid {
     public static int selectionToIndex(String string) {
         string = string.toUpperCase();
         char rowLetter = string.charAt(0);
-        int columnNumber = (Character.getNumericValue(string.charAt(1))-1);
-        int rowNumber = 0;
-        switch (rowLetter) {
-            case 'A' -> rowNumber = 0;
-            case 'B' -> rowNumber = 1;
-            case 'C' -> rowNumber = 2;
-            case 'D' -> rowNumber = 3;
-            case 'E' -> rowNumber = 4;
-            case 'F' -> rowNumber = 5;
-            default -> throw new InvalidOperatorException();
+        if (rowLetter == 'A' || rowLetter == 'B' || rowLetter == 'C' || rowLetter == 'D' || rowLetter == 'E' || rowLetter == 'F') {
+            int columnNumber = (Character.getNumericValue(string.charAt(1)) - 1);
+            int rowNumber = 0;
+            switch (rowLetter) {
+                case 'A' -> rowNumber = 0;
+                case 'B' -> rowNumber = 1;
+                case 'C' -> rowNumber = 2;
+                case 'D' -> rowNumber = 3;
+                case 'E' -> rowNumber = 4;
+                case 'F' -> rowNumber = 5;
+            }
+            return rowNumber * 6 + columnNumber;
+        } else {
+            throw new NullPointerException();
         }
-        return rowNumber * 6 + columnNumber;
+
     }
 
-    public static void drawShipOnGrid(int[] shipPosition, String[] gridMap){
+    public static void drawShipOnGrid(int[] shipHeadPosition, String[] gridMap, int shipLength, int shipOrientation) {
         int shipIndexCounter = 0;
-        for (int i = 0; i< shipPosition.length; i++) {
-            gridMap[shipPosition[shipIndexCounter++]] = "0";
+        if (shipLength == 1) for (int i = 0; i < shipHeadPosition.length; i++) {
+            gridMap[shipHeadPosition[shipIndexCounter++]] = "□";
         }
-    }
-
-}
-//public static void findInArray(String[] stringArray, String string){
-//     switch (string){
-//         case A1 -> stringArray[0]
-//     }
-
-
-
-    /*Hogy a rákba hivatkozzunk az egyes Array elemekre?
-    / A = 1, B = 2?
-    1 1 = Array[0]
-    C3 = 3,3 Array[14] 33 az 14
-    D2 = 4,2 Array[9] 6 az 9
-
-    */
-
-
-//    //jelentísük meg az egyik táblát 6 sorban.
-//    public void printGrid2() {
-//        int rows = 6;
-//        for (int i = 0; i < 36; i++) {
-//            System.out.print(grid2[i] + "  ");
-//            if ((i + 1) % rows == 0) {
-//                System.out.println();
+//        else if (shipLength > 1 && shipOrientation == 1) {
+//            for (int i = 0; i < shipHeadPosition.length; i++) {
+//                //bla bla
+//            }
+//        else if (shipOrientation == 2) {
+//                for (int i = 0; i < shipHeadPosition.length; i++) {
+//                    //bla bla
+//                }
 //            }
 //        }
-//    }
+    }
+}

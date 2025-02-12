@@ -1,14 +1,14 @@
 package BattleShip;
 
 public class Player {
-    private String name;
+    private int playerNumber;
 
-    public String getName() {
-        return name;
+    public int getPlayerNumber() {
+        return playerNumber;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
     }
 
     public void attack(String[] String) {

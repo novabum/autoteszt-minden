@@ -17,33 +17,35 @@ public class MainBattleShip {
         String[] grid2 = new String[36];
         Grid.resetGrids(grid1, grid2);
         Grid.printGrid(grid1);
-        UserInteractionHandler.greetUser();
-        Scanner in = new Scanner(System.in);
-        int[] selection = {Grid.selectionToIndex(in.next())}; //bekérjük és konvertáljuk a hajó indexét int arraybe
-        Ship player1Ship1 = new Ship();
-        player1Ship1.setShipPosition(selection);
-        Grid.drawShipOnGrid(player1Ship1.getShipPosition(), grid1); //felrajzoljuk a táblára
+
+//player 1 creates ship 1
+        UserInteractionHandler.makeAShipDialogue(1,1);
+int[] selectedCell = UserInteractionHandler.selectAndToIndex();//bekérjük és konvertáljuk a hajó indexét int arraybe
+//        System.out.println(Arrays.toString(selection));
+        Ship p1Ship1 = new Ship(
+                selectedCell,
+                "Player1",
+                false,
+                false);
+
+        Grid.drawShipOnGrid(p1Ship1.getShipCells(), grid1, 1, 0); //felrajzoljuk a táblára
         Grid.printGrid(grid1);
 
-        System.out.println("Függőleges vagy vízszintes legyen a 2-es méretű hajód?");
-        System.out.println("Függőleges: 1. Vízszintes: 2");
-        int shipOrientation = in.nextInt();
-        System.out.println("Add meg a kezdőpontját."+ "\n" + "(Balról jobbra, fentről lefelé rajzoljuk fel)");
-        //ez egy index, a hajó feje, orientációval együtt feldolgozzuk és felrajzoljuk
-        int shipHead = Grid.selectionToIndex(in.next());
+        //player 1 creates ship 2
+UserInteractionHandler.makeAShipDialogue(1,2);
+boolean isItHorizontal = UserInteractionHandler.isYourShipHorizontal();//ide kell egy orientáció in. ami boolean-t ad vissza és lehet konstruktálni a 2. hajót.
+selectedCell = UserInteractionHandler.selectAndToIndex();//ez egy index, a hajó feje, orientációval együtt feldolgozzuk és felrajzoljuk
+        Ship p1Ship2 = new Ship(
+                selectedCell,
+                "Player1",
+                isItHorizontal,
+                false);
         //a kezdőpontot és a kiterjedést is validálni kell!
-
-
+        //ezután felrajzolható a táblára.
 
 
 //        System.out.println(Arrays.toString(Ship.getShip(player1Ship1));
 
-
-
-
-
-
-
-
     }
 }
+
