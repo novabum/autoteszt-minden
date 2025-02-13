@@ -2,20 +2,20 @@ package BattleShip;
 
 public class Grid {
 
-    //Fill grids with - signs
-    public static void resetGrids(String[] string, String[] string2) {
+    //feltölti a grideKET ~ karakterekkel
+    public static void resetGrids(String[] grid1, String[] grid2) {
         for (int i = 0; i < 36; i++) {
-            string[i] = "-";
-            string2[i] = "-";
+            grid1[i] = "~";
+            grid2[i] = "~";
         }
     }
 
-    //prints grids in 6 rows
+    //megjeleníti a gridet
     public static void printGrid(String[] string) {
         int rows = 6;
-        System.out.println("   1  2  3  4  5  6"); //oszlopok betűzése
+        System.out.println("   1  2  3  4  5  6"); //oszlopok számozása
         for (int i = 0; i < 36; i++) {
-            switch (i) { // sorok számozása
+            switch (i) { // sorok betűzése
                 case 0 -> System.out.print("A  ");
                 case 6 -> System.out.print("B  ");
                 case 12 -> System.out.print("C  ");
@@ -30,31 +30,12 @@ public class Grid {
         }
     }
 
-    public static int selectionToIndex(String string) {
-        string = string.toUpperCase();
-        char rowLetter = string.charAt(0);
-        if (rowLetter == 'A' || rowLetter == 'B' || rowLetter == 'C' || rowLetter == 'D' || rowLetter == 'E' || rowLetter == 'F') {
-            int columnNumber = (Character.getNumericValue(string.charAt(1)) - 1);
-            int rowNumber = 0;
-            switch (rowLetter) {
-                case 'A' -> rowNumber = 0;
-                case 'B' -> rowNumber = 1;
-                case 'C' -> rowNumber = 2;
-                case 'D' -> rowNumber = 3;
-                case 'E' -> rowNumber = 4;
-                case 'F' -> rowNumber = 5;
-            }
-            return rowNumber * 6 + columnNumber;
-        } else {
-            throw new NullPointerException();
-        }
-
-    }
-
-    public static void drawShipOnGrid(int[] shipHeadPosition, String[] gridMap, int shipLength, int shipOrientation) {
+    //felrajzolja a hajót a pályára
+    public static void drawShipOnGrid(int[] shipCells, String[] playerMap) {
         int shipIndexCounter = 0;
-        if (shipLength == 1) for (int i = 0; i < shipHeadPosition.length; i++) {
-            gridMap[shipHeadPosition[shipIndexCounter++]] = "□";
+        int shipLength = shipCells.length;
+        for (int i = 0; i < shipLength; i++) {
+            playerMap[shipCells[shipIndexCounter++]] = "□";
         }
 //        else if (shipLength > 1 && shipOrientation == 1) {
 //            for (int i = 0; i < shipHeadPosition.length; i++) {
@@ -67,4 +48,43 @@ public class Grid {
 //            }
 //        }
     }
+    // validálás = nem törhet sort! nem tehető más hajóra! valid input!
+    public static int[] buildShipCells(int shipSize, boolean horizontal, String[] playerMap) {
+        int[] shipCells = new int[shipSize];
+
+        //elfoglalt cellák megírása. validálással
+        while (true) {
+            System.out.println("Add meg a hajó orrát");
+            int head = UserInteractionHandler.selectionToIndex();
+            try {
+                if (horizontal && (head % 6) + shipSize <= 6) { // vízszintes és el is fér
+                    for (int i = 0; i < shipSize; i++) {
+                        shipCells[i] = head++;
+                    }
+
+                } else if (!horizontal && head + (shipSize - 1) * 6 < 36) { //függőleges és el is fér
+                    for (int i = 0; i < shipSize; i++) {
+                        shipCells[i] = head;
+                        head += 6;
+                    }
+
+                } else {
+                    throw new IllegalArgumentException("Érvénytelen pozíció. Próbáld újra");//HIBA
+                }
+
+                //validálni kell, hogy nincs-e már rajta hajó, azaz "□" a térképen a hajó celláiból
+                for (int i = 0; i < shipSize; i++) {
+                    if (playerMap[shipCells[i]].equals("□")) {
+                        throw new IllegalArgumentException("Hajók ütköznek. Próbáld újra"); //HIBA
+                    }
+                }
+                return shipCells;//ezt csak akkor szabad visszaadni, ha minden ok
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+    }
+
+
 }
