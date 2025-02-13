@@ -1,7 +1,5 @@
 package BattleShip;
 
-import java.util.Scanner;
-
 public class MainBattleShip {
     public static void main(String[] args) {
 //    5 hajó lesz benne, konzolban menjen 6x6-os táblán megy a játék.
@@ -10,42 +8,49 @@ public class MainBattleShip {
         // találat, süllyedés jelzése. Minden lövés után ki kell rajzolni azt a táblát, amelyet látunk a másikéból.
         // ismeretlen: - üres: 0 talált X
         // ha mindegyik hajó elsüllyedt vége a játéknak
-        //nem állhat le a program
+        // nem állhat le a program
         // határidő március 2. hete
 
         String[] grid1 = new String[36];
         String[] grid2 = new String[36];
+
+        Ship[] player1Ship = new Ship[5]; //Arrayekben tároljuk a hajókat, mert a constructorban nem módosítható a név dinamikusan
+        Ship[] player2Ship = new Ship[5];
+
         Grid.resetGrids(grid1, grid2);
         Grid.printGrid(grid1);
+//lehetne egy szabályok tájékoztató
+        Player.shipCreator(1, grid1, player1Ship);
+        Player.atWar(1,grid2,player2Ship);
+        Grid.printGrid(grid2);
+        Player.shipCreator(2, grid2, player2Ship);
 
-//player 1 creates ship 1
-        UserInteractionHandler.makeAShipDialogue(1,1);
-int[] selectedCell = UserInteractionHandler.selectAndToIndex();//bekérjük és konvertáljuk a hajó indexét int arraybe
-//        System.out.println(Arrays.toString(selection));
-        Ship p1Ship1 = new Ship(
-                selectedCell,
-                "Player1",
-                false,
-                false);
 
-        Grid.drawShipOnGrid(p1Ship1.getShipCells(), grid1, 1, 0); //felrajzoljuk a táblára
-        Grid.printGrid(grid1);
+//        System.out.println(Arrays.toString(player1Ship)); //Ellenőrzés,
+//        System.out.println(Arrays.toString(player2Ship));
+//        System.out.println(player1Ship[0].getName());
 
-        //player 1 creates ship 2
-UserInteractionHandler.makeAShipDialogue(1,2);
-boolean isItHorizontal = UserInteractionHandler.isYourShipHorizontal();//ide kell egy orientáció in. ami boolean-t ad vissza és lehet konstruktálni a 2. hajót.
-selectedCell = UserInteractionHandler.selectAndToIndex();//ez egy index, a hajó feje, orientációval együtt feldolgozzuk és felrajzoljuk
-        Ship p1Ship2 = new Ship(
-                selectedCell,
-                "Player1",
-                isItHorizontal,
-                false);
-        //a kezdőpontot és a kiterjedést is validálni kell!
-        //ezután felrajzolható a táblára.
+//        boolean isThisTheEnd = false;
+//        while (!isThisTheEnd)
+//
+//        {
+//            Player.atWar(1, grid2);
+//            Player.atWar(1, grid2);
+//            isThisTheEnd = true; //ide kell egy method
+//        }
+    }
+}
+
+    // ****************************************** //
+
+
+
+
+
+
+
+
 
 
 //        System.out.println(Arrays.toString(Ship.getShip(player1Ship1));
-
-    }
-}
 
