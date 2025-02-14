@@ -1,21 +1,16 @@
 package BattleShip;
 
-import Calculator.Simple.Objects.InvalidOperatorException;
-
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class CodeTester {
     public static void main(String[] args) {
 
-        boolean isItHorizontal = UserInteractionHandler.isYourShipHorizontal();
-        System.out.println(isItHorizontal);
 
     }
 
 
 }
-
+//
+//boolean isItHorizontal = Ship.isYourShipHorizontal();
+//        System.out.println(isItHorizontal);
 
 //    public static boolean isYourShipHorizontal() {
 //        Scanner in = new Scanner(System.in);
