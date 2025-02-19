@@ -27,16 +27,10 @@ public class MainBattleShip {
         Ship.shipCreator(2, p2grid, p2ShipsArray);
 
         //harc
-        boolean theGameIsOn = true;
         int p1ShootsOn;
         int p2ShootsOn;
-
-        int[] p1CellShotsArray = new int[36]; //ha nagyon béna lenne, ennyi lövése lenne
-        int[] p2CellShotsArray = new int[36];
         while (true) {
-
-
-            //player1 phase
+            /* player1 phase */
             System.out.println("\n2. játékos táblája");
             Grid.printGrid(p1grid);
             p1ShootsOn = (BattleStep.commenceFire(1, p2grid)); //lő és talált?
@@ -45,7 +39,7 @@ public class MainBattleShip {
             if (BattleStep.allShipsDestroyed(2, p2ShipsArray)){
              return;
             }
-            //player 2 phase
+            /* player 2 phase */
             System.out.println("\n2. játékos táblája");
             Grid.printGrid(p2grid);
             p2ShootsOn = (BattleStep.commenceFire(2, p1grid)); //lő és talált?
