@@ -1,6 +1,5 @@
 package BattleShip;
 
-
 import javax.swing.*;
 
 public class BattleStep extends Ship {
