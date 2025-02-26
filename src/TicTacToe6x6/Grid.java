@@ -1,6 +1,6 @@
 package TicTacToe6x6;
 
-public class Grid extends BattleShip.Grid {
+public class Grid {
 
     private static String[] grid = new String[36];
 
