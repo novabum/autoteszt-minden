@@ -104,7 +104,9 @@ public class Grid {
     }
 
     public static boolean checkDiagonalWinner() {
-        int[] lnyi = {0, 1, 2, 6, 7, 8, 12, 13, 14}; // LehetségesNyertesIndxek - csak innen indulhatnak a nyertes átlósok
+        // LehetségesNyertesIndxek - csak innen indulhatnak a nyertes átlósok
+        int[] lnyi = {0, 1, 2, 6, 7, 8, 12, 13, 14};
+
         for (int i = 0; i < lnyi.length; i++) {
             int zs = lnyi[i];
             if (Grid.grid[zs].equals("X") &&

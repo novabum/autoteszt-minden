@@ -12,6 +12,7 @@ public class Grid {
 
     public void printGrid() {
         int rows = 6;
+        System.out.println();
         System.out.println("   1  2  3  4  5  6"); //oszlopok számozása
         for (int i = 0; i < 36; i++) {
             switch (i) { // sorok betűzése
@@ -29,20 +30,14 @@ public class Grid {
         }
     }
 
+    //Cellaírás
     public void setCell(int index, String value){
         grid[index] = value;
     }
 
+    //Cellalekérés
     public String getCell(int index) {
         return grid[index];
     }
 
-    public static void drawXOnGrid(int cellShot, String[] grid){
-        if (grid[cellShot].equals("□")){
-            grid[cellShot] = "■";
-        }
-        else {
-            grid[cellShot] = "X"; //mert oda már nem lőhet, ahová lőtt. Lekezelve
-        }
-    }
 }

@@ -1,5 +1,6 @@
 package BattleShip2;
 
+//inputból index lesz. hibakezeléssel
 public class InputConverter {
     public static int inputToIndex() {
         while (true) {
