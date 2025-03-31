@@ -1,3 +1,5 @@
+package Archive;
+
 public class Methods {
     public static void main(String[] args) {
         int valtozo = sum(5, 11);

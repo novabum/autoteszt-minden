@@ -1,3 +1,5 @@
+package Archive;
+
 import java.util.Arrays;
 import java.util.Scanner;
 //EZ a program a kisbetűs karakterekből nagybetűset és vica versa készít. Nagyon izgi

@@ -1,3 +1,5 @@
+package Archive;
+
 public class HaziFeladat1 {
     public static void main(String[] args) {
 /*

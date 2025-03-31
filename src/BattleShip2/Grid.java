@@ -1,7 +1,6 @@
 package BattleShip2;
 
 public class Grid {
-    private String[] board;
     private String[] grid;
 
     public Grid() {
